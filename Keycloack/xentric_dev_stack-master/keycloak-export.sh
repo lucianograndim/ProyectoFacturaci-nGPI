@@ -1,0 +1,1 @@
+docker exec -it keycloak /opt/keycloak/bin/kc.sh export --file=/opt/keycloak/data/import/Alloxentric.json --realm Alloxentric
