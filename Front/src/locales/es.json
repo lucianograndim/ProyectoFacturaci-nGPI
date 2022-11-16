@@ -1,0 +1,8 @@
+
+{
+    "Main": {
+      "message": "Hola Mundo desde el Inicio",
+      "message2": "Probando i18n",
+      "message3": "Conectado al Back !"
+    }
+  }

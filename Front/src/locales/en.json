@@ -1,0 +1,7 @@
+{
+  "Main": {
+    "message": "Hello World from Home",
+    "message2": "Testing i18n",
+    "message3": "Connected to Back "
+  }
+}

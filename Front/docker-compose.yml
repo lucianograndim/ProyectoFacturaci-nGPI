@@ -1,0 +1,28 @@
+version: "2.4"
+
+services:
+  vue_base:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    restart: always
+    hostname: vue_base
+    container_name: vue_base
+    ports:
+      - '9000:8000'
+    env_file:
+      - .env
+    volumes:
+      - .:/opt/alloxentric
+      - node_modules:/opt/alloxentric/node_modules
+    environment:
+      - PORT=8000
+      - npm_config_unsafe_perm=true
+      - NODE_ENV=development
+
+volumes:
+  node_modules: null
+
+networks:
+  default:
+    name: alloxentric.com
