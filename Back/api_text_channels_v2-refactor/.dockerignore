@@ -1,0 +1,13 @@
+.dockerignore
+.git/
+.gitmodules
+.gitignore
+.pre-commit-config.yaml
+docker-compose.yml
+Makefile
+README.md
+Dockerfile
+__pycache__/
+.vscode/
+*.md
+logs/

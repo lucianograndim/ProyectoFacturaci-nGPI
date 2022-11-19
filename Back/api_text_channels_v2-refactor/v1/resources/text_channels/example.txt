@@ -1,0 +1,57 @@
+Datos de INICIO
+
+user_db
+token_api
+
+id_contact
+contact_account
+contact_details
+
+channel
+channel_account
+
+IF message_origen == contact (128)
+
+    type_message
+    contact_message
+    contact_message_event
+
+    IF conversacion existe (147)
+
+        conversacion
+
+    IF conversacion NO existe (157)
+
+        campaign_log
+
+        # Se agrega contacto a: campaignList
+
+        campaign_name
+        campaign_type
+        id_campaign
+
+        # Se registra conversacion
+        id_conversacion
+
+    # Se busca contacto en CampaignList para obtener operador actual
+
+    operador
+    operator_type
+
+    IF operador == bot (271)
+
+        id_bot
+        id_interaccion_channel
+        action_contact
+        id_file
+
+        IF contact_message_event == 'new_message'
+
+            respuesta_apibot = call_bot()
+
+            IF metadata_bot['comandoAcanal'] == 'TRANSFERIR CONVERSACION'
+                conversacion["tipo_operador"] = "agent"
+                conversacion["id_operador"] = " "
+                conversacion["transferred"] = True
+                
+    IF operador == agente

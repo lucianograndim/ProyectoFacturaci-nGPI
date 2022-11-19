@@ -1,0 +1,50 @@
+version: "2.4"
+
+services:
+  api_text:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    restart: always
+    hostname: api_text
+    container_name: api_text
+    mem_limit: 512m
+    cpus: 2
+    command: python app.py
+    # command: gunicorn app:app -w 1 --worker-class eventlet -b 0.0.0.0:5050 --log-config log.conf
+    ports:
+      - "5056:5050"
+    volumes:
+      - .:/opt/alloxentric
+    env_file:
+      - .env.local
+      # - mongo-xentric_db-access.env
+      # - keycloak-flask_api-access.env
+      # - dns-apis-flask-access.env
+      # - sentry-io-access.env
+    environment:
+      - PORT=5050
+      # - CELERY_BROKER_URL=redis://redis.alloxentric.com:6379/0
+      # - CELERY_RESULT_BACKEND=redis://redis.alloxentric.com:6379/0
+
+  # worker:
+  #   build: .
+  #   restart: always
+  #   command: celery --app v1.utils.tasks.celery worker --loglevel=info --logfile=logs/celery.log
+  #   volumes:
+  #     - .:/opt/alloxentric
+  #   env_file:
+  #     - mongo-xentric_db-access.env
+  #     - keycloak-flask_api-access.env
+  #     - dns-apis-flask-access.env
+  #     - sentry-io-access.env
+  #     - logging-setup.env
+  #     - api.env
+  #   environment:
+  #     - CELERY_BROKER_URL=redis://redis.alloxentric.com:6379/0
+  #     - CELERY_RESULT_BACKEND=redis://redis.alloxentric.com:6379/0
+  
+networks:
+  default:
+    name: alloxentric.com
+    
