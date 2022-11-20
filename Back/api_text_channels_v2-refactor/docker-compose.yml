@@ -1,10 +1,10 @@
-version: "2.4"
+version: "3.8"
 
 services:
   api_text:
     build:
       context: .
-      dockerfile: .docker/Dockerfile
+      dockerfile: .Dockerfile
     restart: always
     hostname: api_text
     container_name: api_text
